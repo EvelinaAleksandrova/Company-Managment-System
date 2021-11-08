@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <title>Newspaper-24 Hours</title>
     <link rel="stylesheet" href="stylesheet.css">
-    <script src="script.js"></script>
+
 </head>
 <body>
 
 
 <div class="nav-bar-container">
-<nav>
-    <a href="home-page">Home</a>
-</nav>
+    <nav>
+        <a href="home-page">Home</a>
+    </nav>
 </div>
 
 <div class="title">
@@ -20,15 +20,43 @@
 </div>
 
 <div class="login-container">
-<h3>Log in System</h3>
-     Work ID Number <input id="work-id-number" placeholder="#123456789">
-     <br>
-     Password <input id="password" type="password">
+    <h3>Log in System</h3>
+
+    Work ID Number <input type="text" id="work-id-number" placeholder="#123456789"/>
+    Password <input id="password" type="password"/>
+    <button onclick="check()">Submit</button>
+</div>
+
+
+<div class="add-employee">
+    <h3>Add new Employee</h3>
+    Name <input type="text" id="new-name">
+    Work ID Number <input type="text" id="new-work-id-number" placeholder="#123456789"/>
+    Password <input id="new-password" type="password"/>
+    Rank <input type="text" id="new-rank">
+    Position <input type="text" id="new-position" >
+    Salary <input type="text" id="new-salary">
+
+    <button type="button" id="add-new-employee-button" onclick="addEmployee()">Add Employee</button>
+
+</div>
+
+
+<div class="employee-container">
+    <h3>List of current employees in company</h3>
+    <ul id="employees-list">
+    </ul>
+</div>
+
+
+
 </div>
 
 <footer>
     Newspaper - 24 Hours. All rights reserved &copy, 2021
 </footer>
 
+
+<script src="script.js"></script>
 </body>
 </html>
