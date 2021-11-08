@@ -191,6 +191,48 @@ let newSalary = document.getElementById('new-salary');
 // }
 
 
+function check() {
+    // let employee1 = new Employee("Nadejda Ivanova", "#3367761", "bmnolbrewo14weg", "ceo", "chief executive officer", 3000);
+    let ceo = {
+        "name": "Nadejda Ivanova",
+        "workIDNumberForCEO": "1",
+        "passwordCEO": "1"
+
+    }
+    let inputWorkIDNumber = document.getElementById('work-id-number').value;
+    let inputPassword = document.getElementById('password').value;
+
+    if (inputWorkIDNumber === ceo.workIDNumberForCEO) {
+        if (inputPassword === ceo.passwordCEO) {
+            document.getElementById('ceo-operations').style.display = "block";
+            document.getElementById('log-out-ceo-button').style.display = "block";
+            document.getElementById("h1-ceo-operations").style.display = "block";
+            document.getElementById('login-operation').style.display = "none";
+
+        }else{
+            alert("Wrong work ID number or password!");
+        }
+    }else{
+        alert("Wrong work ID number or password!");
+    }
+
+    document.getElementById('work-id-number').value = "";
+    document.getElementById('password').value = "";
+}
+
+// function openFormCeoOperations() {
+//     document.getElementsByClassName('add-employee').style.display = 'block';
+// }
+//
+function closeCeoLogOut() {
+    document.getElementById('ceo-operations').style.display = 'none';
+    document.getElementById('log-out-ceo-button').style.display = 'none';
+    document.getElementById("h1-ceo-operations").style.display = "none";
+    document.getElementById("login-operation").style.display = "block";
+
+}
+
+
 let employeeList = [];
 
 function loadLocalStorageEmployees() {
@@ -217,16 +259,17 @@ function showEmployees() {
 
         employeeTemplate += `
         <li>
-            <span class="employee">${item.employeeName} </span>
+            <th><span class="employee">${item.employeeName} </span></th>
             <span class="employee">${item.employeeWorkIDNumber} </span>
             <span class="employee">${item.employeePassword} </span>
-            <span class="employee">${item.employeeRank} </span>
             <span class="employee">${item.employeeRank} </span>
             <span class="employee">${item.employeePosition} </span>
             <span class="employee">${item.employeeSalary} </span>
             
-            <button class="delete-btn"  onclick="removeEmployee(${index})">x</button>
+            <button class="delete-btn-employee"  onclick="removeEmployee(${index})">Discharge</button>
+            <button class="edit-salary-btn" > Edit Salary</button>
             <br>
+        
         </li>
         `;
     });

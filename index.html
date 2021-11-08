@@ -9,48 +9,58 @@
 <body>
 
 
-<div class="nav-bar-container">
-    <nav>
-        <a href="home-page">Home</a>
-    </nav>
-</div>
+<!--<div class="nav-bar-container">-->
+<!--    <nav>-->
+<!--        <a href="home-page">Home</a>-->
+<!--    </nav>-->
+<!--</div>-->
 
 <div class="title">
     <h1>Newspaper - <i>24 Hours</i></h1>
 </div>
 
-<div class="login-container">
-    <h3>Log in System</h3>
 
-    Work ID Number <input type="text" id="work-id-number" placeholder="#123456789"/>
-    Password <input id="password" type="password"/>
-    <button onclick="check()">Submit</button>
+<div id="login-operation">
+    <div class="login-container">
+        <h3>Log in System</h3>
+        Work ID Number <input type="text" id="work-id-number" placeholder="#123456789"/>
+        Password <input id="password" type="password"/>
+        <button onclick="check()">Submit</button>
+    </div>
 </div>
 
 
-<div class="add-employee">
-    <h3>Add new Employee</h3>
-    Name <input type="text" id="new-name">
-    Work ID Number <input type="text" id="new-work-id-number" placeholder="#123456789"/>
-    Password <input id="new-password" type="password"/>
-    Rank <input type="text" id="new-rank">
-    Position <input type="text" id="new-position" >
-    Salary <input type="text" id="new-salary">
+<h1 id="h1-ceo-operations">Executive Director Operations</h1>
+<div id="ceo-operations">
+    <div class="ceo-operations">
 
-    <button type="button" id="add-new-employee-button" onclick="addEmployee()">Add Employee</button>
+        <div class="add-employee" id="add-employee-operations">
+            <h3>Add new Employee</h3>
+            Name <input type="text" id="new-name">
+            Work ID Number <input type="text" id="new-work-id-number" placeholder="#123456789"/>
+            Password <input id="new-password" type="password"/>
+            Rank <input type="text" id="new-rank">
+            Position <input type="text" id="new-position">
+            Salary <input type="text" id="new-salary">
 
+            <button type="button" id="add-new-employee-button" onclick="addEmployee()">Add Employee</button>
+        </div>
+
+        <div class="employee-container">
+            <h3>List of current employees in company</h3>
+            <h4>Name | Work ID Number | Password | Rank | Position | Salary </h4>
+            <ul id="employees-list">
+            </ul>
+        </div>
+
+    </div>
 </div>
 
 
-<div class="employee-container">
-    <h3>List of current employees in company</h3>
-    <ul id="employees-list">
-    </ul>
+<div class="ceo-operations-button">
+    <button id="log-out-ceo-button" type="button" onclick="closeCeoLogOut()">Log Out</button>
 </div>
 
-
-
-</div>
 
 <footer>
     Newspaper - 24 Hours. All rights reserved &copy, 2021
