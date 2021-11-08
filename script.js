@@ -1,7 +1,8 @@
 let addEmployeeButton = document.getElementById('add-new-employee-button');
 let removeButton = document.querySelectorAll('.delete-btn');
 
-let listEmployee = document.getElementById('employees-list');
+// let listEmployee = document.getElementById('employees-list');
+let table = document.getElementById("table");
 let newName = document.getElementById('new-name');
 let newWorkIDNumber = document.getElementById('new-work-id-number');
 let newPassword = document.getElementById('new-password');
@@ -9,12 +10,8 @@ let newRank = document.getElementById('new-rank');
 let newPosition = document.getElementById('new-position');
 let newSalary = document.getElementById('new-salary');
 
+let currentIndexOfEmployee;
 let employeeList = [];
-
-function editEmployeeChangeTexts() {
-    document.getElementById("h3-add-new-employee").value = "Edit Employee Salary";
-    document.getElementById("")
-}
 
 function check() {
     let ceo = {
@@ -78,24 +75,35 @@ function showEmployees() {
         document.getElementById('new-rank').value = '';
         document.getElementById('new-position').value = '';
         document.getElementById('new-salary').value = '';
-
-        employeeTemplate += `<li>
-            <th><span class="employee">${item.employeeName} </span></th>
-            <span class="employee">${item.employeeWorkIDNumber} </span>
-            <span class="employee">${item.employeePassword} </span>
-            <span class="employee">${item.employeeRank} </span>
-            <span class="employee">${item.employeePosition} </span>
-            
-            <span class="employee">${item.employeeSalary} </span>
-            <button class="delete-btn-employee"  onclick="removeEmployee(${index})">Discharge</button>
-            <button class="edit-salary-btn" onclick="editEmployee(${index})">Edit</button>
-            
-<!--            <input id="change-salary" placeholder="Write here new salary...">-->
-<!--            <button id="edit">Edit</button>-->
-        
-        </li>`;
+        // <tr>
+        //     <td>Alfreds Futterkiste</td>
+        //     <td>Maria Anders</td>
+        //     <td>Germany</td>
+        // </tr>
+        // employeeTemplate += `<li>
+        //     <span class="employee">${item.employeeName} </span>|
+        //     <span class="employee">${item.employeeWorkIDNumber} </span>|
+        //     <span class="employee">${item.employeePassword} </span>|
+        //     <span class="employee">${item.employeeRank} </span>|
+        //     <span class="employee">${item.employeePosition} </span>|
+        //     <span class="employee">${item.employeeSalary} </span>|
+        //     <button class="delete-btn-employee"  onclick="removeEmployee(${index})">Discharge</button>
+        //     <button class="edit-salary-btn" onclick="editEmployee(${index})">Edit</button>
+        // </li>`;
+        table.innerHTML +=` 
+        <tr>
+            <td class="employee">${item.employeeName} </td>
+            <td class="employee">${item.employeeWorkIDNumber} </td>
+            <td class="employee">${item.employeePassword} </td>
+            <td class="employee">${item.employeeRank} </td>
+            <td class="employee">${item.employeePosition} </td>
+            <td class="employee">${item.employeeSalary} </td>
+            <td id="edit-btn-td"><button class="edit-salary-btn" onclick="editEmployee(${index})">Edit</button>
+            <button class="delete-btn-employee"  onclick="removeEmployee(${index})">Discharge</button></td>
+        </tr>`;
     });
-    listEmployee.innerHTML = employeeTemplate;
+    // listEmployee.innerHTML = employeeTemplate;
+    // table.innerHTML = employeeTemplate;
 }
 
 function updateLocalStorageEmployees() {
@@ -103,34 +111,23 @@ function updateLocalStorageEmployees() {
 }
 
 function changeEmployee() {
-    // Name <input type="text" id="change-name">
-    // Work ID Number <input type="text" id="change-work-id-number" placeholder="#123456789"/>
-    // Password <input id="change-password" type="password"/>
-    // Rank <input type="text" id="change-rank">
-    // Position <input type="text" id="change-position">
-    // Salary <input type="text" id="change-salary">
-    // employeeList[index].employeeSalary = 1200;
+    employeeList[currentIndexOfEmployee].employeeName = document.getElementById("change-name").value;
+    employeeList[currentIndexOfEmployee].employeeWorkIDNumber = document.getElementById("change-work-id-number").value;
+    employeeList[currentIndexOfEmployee].employeePassword = document.getElementById("change-password").value;
+    employeeList[currentIndexOfEmployee].employeeRank = document.getElementById("change-rank").value;
+    employeeList[currentIndexOfEmployee].employeePosition = document.getElementById("change-position").value;
+    employeeList[currentIndexOfEmployee].employeeSalary = document.getElementById("change-salary").value;
 
-    // employeeName: newName.value,
-    //     employeeWorkIDNumber: newWorkIDNumber.value,
-    //     employeePassword: newPassword.value,
-    //     employeeRank: newRank.value,
-    //     employeePosition: newPosition.value,
-    //     employeeSalary: newSalary.value
-
-    employeeList[0].employeeSalary = 1200;
-
-
-
-
+    updateLocalStorageEmployees();
+    showEmployees();
 
     document.getElementById('add-employee-operations').style.display = "block";
     document.getElementById('change-employee-operations').style.display = "none";
 }
 
 function editEmployee(index) {
-    // updateLocalStorageEmployees();
-    // showEmployees();
+    currentIndexOfEmployee = index;
+
     document.getElementById('add-employee-operations').style.display = "none";
     document.getElementById('change-employee-operations').style.display = "block";
 
@@ -190,3 +187,18 @@ employeeList[0].employeeSalary = 1200;
 //     [[Prototype]]: Object
 // length: 2
 //     [[Prototype]]: Array(0)
+
+// Name <input type="text" id="change-name">
+// Work ID Number <input type="text" id="change-work-id-number" placeholder="#123456789"/>
+// Password <input id="change-password" type="password"/>
+// Rank <input type="text" id="change-rank">
+// Position <input type="text" id="change-position">
+// Salary <input type="text" id="change-salary">
+// employeeList[index].employeeSalary = 1200;
+
+// employeeName: newName.value,
+//     employeeWorkIDNumber: newWorkIDNumber.value,
+//     employeePassword: newPassword.value,
+//     employeeRank: newRank.value,
+//     employeePosition: newPosition.value,
+//     employeeSalary: newSalary.value

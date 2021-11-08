@@ -196,7 +196,7 @@ body {
 
 /*------------------------------------------ LIST OF ALL EMPLOYEE ------------------*/
 .employee-container {
-    margin-left: 50px;
+    margin-left: 5px;
     margin-bottom: 60px;
     border: 4px double black;
     align-items: center;
@@ -209,50 +209,73 @@ body {
     font-size: 30px;
     margin-bottom: 30px;
     text-align: center;
-    border-bottom: 1px solid black;
+    /*border-bottom: 1px solid black;*/
     margin-right: 10px;
     margin-left: 10px;
+    margin-top: 30px;
 }
 
 .employee-container h4 {
     margin-bottom: 20px;
     font-size: 20px;
     margin-left: 10px;
-    border-bottom: 1px solid black;
     margin-right: 10px;
 }
 
 
-.employee-container #employees-list {
-    font-size: 20px;
-}
+/*.employee-container #employees-list {*/
+/*    font-size: 20px;*/
+/*}*/
 
-#employees-list li {
-    font-size: 25px;
-    list-style-type: none;
-    margin-left: 10px;
-    margin-bottom: 20px;
-}
+/*#employees-list li {*/
+/*    font-size: 25px;*/
+/*    list-style-type: none;*/
+/*    margin-left: 10px;*/
+/*    margin-bottom: 20px;*/
+/*}*/
 
-li .delete-btn-employee {
+table .delete-btn-employee {
     background-color: red;
     font-size: 17px;
     color: white;
     width: 100px;
     height: 22px;
     float: right;
-    margin-right: 10px;
+    margin-right: 70px;
 
 }
 
-#employees-list li .edit-salary-btn {
+table .edit-salary-btn {
     background-color: #e8e71e;
     font-size: 17px;
     color: black;
     width: 100px;
     height: 22px;
     float: right;
-    margin-right: 5px;
+    margin-right: 50px;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    color: black;
+    margin-top: 10px;
+}
+
+/*#edit-btn-td, #delete-btn-td {*/
+/*    border-top:1px solid #000000 ;*/
+/*    border-bottom: 1px solid #000000;*/
+
+/*}*/
+/*#edit-btn-td{*/
+/*    border-right: none;*/
+/*}*/
+
+td, th {
+    border: 1px solid #000000;
+    text-align: center;
+    padding: 8px;
 }
 
 .ceo-operations-button {
