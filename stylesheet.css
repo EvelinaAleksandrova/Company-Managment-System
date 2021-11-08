@@ -9,23 +9,23 @@ body {
     background: linear-gradient(0deg, rgb(139, 183, 255) 0%, rgba(255, 255, 255, 1) 100%);
 }
 
-a {
-    color: white;
-    text-decoration: none;
-    font-size: 30px;
-    margin-left: 7px;
-    margin-right: 15px;
-}
+/*a {*/
+/*    color: white;*/
+/*    text-decoration: none;*/
+/*    font-size: 30px;*/
+/*    margin-left: 7px;*/
+/*    margin-right: 15px;*/
+/*}*/
 
-.nav-bar-container {
-    background-color: black;
-    color: white;
-    position: fixed;
-    width: 100%;
-    top: 0%;
+/*.nav-bar-container {*/
+/*    background-color: black;*/
+/*    color: white;*/
+/*    position: fixed;*/
+/*    width: 100%;*/
+/*    top: 0%;*/
 
 
-}
+/*}*/
 
 
 .title {
@@ -35,21 +35,8 @@ a {
     margin-bottom: 100px;
 }
 
-#h1-ceo-operations {
-    text-align: center;
-    font-size: 40px;
-    display: none;
-    margin-bottom: 50px;
-    border-top: 2px solid black;
-}
-
-#ceo-operations {
-   display: none;
-}
-.ceo-operations{
-    display: flex;
-}
-#login-operation{
+/*-------------------------------- LOGIN FORM --------------------------------*/
+#login-operation {
     display: block;
 }
 
@@ -96,6 +83,25 @@ a {
 }
 
 
+#h1-ceo-operations {
+    text-align: center;
+    font-size: 40px;
+    display: none;
+    margin-bottom: 50px;
+    border-top: 2px solid black;
+    padding-top: 50px;
+}
+
+#ceo-operations {
+    display: none;
+}
+
+.ceo-operations {
+    display: flex;
+}
+
+/*------------------------------- ADD EMPLOYEE FORM ---------------*/
+
 .add-employee {
     /*margin-top: 200px;*/
     font-size: 20px;
@@ -104,9 +110,10 @@ a {
     display: flex;
     flex-direction: column;
     border: double 4px black;
-    width: 30%;
+    width: 20%;
+    height: 70%;
     /*margin: auto;*/
-    margin-left: 5%;
+    margin-left: 3%;
     padding-bottom: 15px;
     margin-bottom: 60px;
     align-items: center;
@@ -117,7 +124,7 @@ a {
     margin-bottom: 35px;
     margin-top: 10px;
     padding-bottom: 5px;
-    font-size: 25px;
+    font-size: 20px;
     border-bottom: 1px solid black;
 }
 
@@ -128,11 +135,11 @@ a {
     margin-left: 20px;
     margin-right: 20px;
     margin-bottom: 5px;
-    width: 60%;
+    width: 80%;
 }
 
 .add-employee button {
-    width: 30%;
+    width: 40%;
     margin-top: 10px;
     font-size: 17px;
     text-align: center;
@@ -140,13 +147,61 @@ a {
     background-color: mediumspringgreen;
 }
 
+/*--------------------------------- CHANGE EMPLOYEE FORM---------------*/
+
+.change-employee {
+    /*margin-top: 200px;*/
+    font-size: 20px;
+    /*flex-flow: column;*/
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    border: double 4px black;
+    width: 20%;
+    height: 70%;
+    /*margin: auto;*/
+    margin-left: 3%;
+    padding-bottom: 15px;
+    margin-bottom: 60px;
+    align-items: center;
+    /*visibility: hidden;*/
+}
+
+.change-employee h3 {
+    margin-bottom: 35px;
+    margin-top: 10px;
+    padding-bottom: 5px;
+    font-size: 25px;
+    border-bottom: 1px solid black;
+}
+
+.change-employee input {
+    font-size: 20px;
+    text-align: center;
+    height: 35px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 5px;
+    width: 80%;
+}
+
+.change-employee button {
+    width: 40%;
+    margin-top: 10px;
+    font-size: 17px;
+    text-align: center;
+    justify-content: center;
+    background-color: mediumspringgreen;
+}
+
+/*------------------------------------------ LIST OF ALL EMPLOYEE ------------------*/
 .employee-container {
     margin-left: 50px;
     margin-bottom: 60px;
     border: 4px double black;
     align-items: center;
-    width: 60%;
-
+    width: 70%;
+    margin-right: 1%;
 
 }
 
@@ -165,19 +220,18 @@ a {
     margin-left: 10px;
     border-bottom: 1px solid black;
     margin-right: 10px;
-
 }
 
 
 .employee-container #employees-list {
     font-size: 20px;
-
 }
 
 #employees-list li {
+    font-size: 25px;
     list-style-type: none;
     margin-left: 10px;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
 
 li .delete-btn-employee {
@@ -192,9 +246,9 @@ li .delete-btn-employee {
 }
 
 #employees-list li .edit-salary-btn {
-    background-color: red;
+    background-color: #e8e71e;
     font-size: 17px;
-    color: white;
+    color: black;
     width: 100px;
     height: 22px;
     float: right;
@@ -211,7 +265,7 @@ li .delete-btn-employee {
     background-color: orange;
     font-size: 20px;
     margin-bottom: 100px;
-    width: 200px;
+    width: 35%;
     height: 40px;
     display: none;
 }
