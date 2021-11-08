@@ -102,37 +102,44 @@ function updateLocalStorageEmployees() {
     localStorage.setItem("employees", JSON.stringify(employeeList));
 }
 
+function changeEmployee() {
+    // Name <input type="text" id="change-name">
+    // Work ID Number <input type="text" id="change-work-id-number" placeholder="#123456789"/>
+    // Password <input id="change-password" type="password"/>
+    // Rank <input type="text" id="change-rank">
+    // Position <input type="text" id="change-position">
+    // Salary <input type="text" id="change-salary">
+    // employeeList[index].employeeSalary = 1200;
 
-function editEmployee(index) {
-    document.getElementById('add-employee-operations').style.display = "none";
-    document.getElementById('change-employee-operations').style.display = "block";
-    // updateLocalStorageEmployees();
-    // showEmployees();
+    // employeeName: newName.value,
+    //     employeeWorkIDNumber: newWorkIDNumber.value,
+    //     employeePassword: newPassword.value,
+    //     employeeRank: newRank.value,
+    //     employeePosition: newPosition.value,
+    //     employeeSalary: newSalary.value
 
-    console.log(employeeList);
     employeeList[0].employeeSalary = 1200;
 
-// 0:
-// employeeName: "Erik"
-// employeePassword: "3"
-// employeePosition: "journalist"
-// employeeRank: "senior"
-// employeeSalary: "4000"
-// employeeWorkIDNumber: "#3"
-//     [[Prototype]]: Object
-// 1:
-// employeeName: "evi aleksandrova"
-// employeePassword: "2"
-// employeePosition: "journalist"
-// employeeRank: "junior"
-// employeeSalary: "1200"
-// employeeWorkIDNumber: "2"
-//     [[Prototype]]: Object
-// length: 2
-//     [[Prototype]]: Array(0)
 
 
 
+
+    document.getElementById('add-employee-operations').style.display = "block";
+    document.getElementById('change-employee-operations').style.display = "none";
+}
+
+function editEmployee(index) {
+    // updateLocalStorageEmployees();
+    // showEmployees();
+    document.getElementById('add-employee-operations').style.display = "none";
+    document.getElementById('change-employee-operations').style.display = "block";
+
+    document.getElementById("change-name").value = employeeList[index].employeeName;
+    document.getElementById("change-work-id-number").value = employeeList[index].employeeWorkIDNumber;
+    document.getElementById("change-password").value = employeeList[index].employeePassword;
+    document.getElementById("change-rank").value = employeeList[index].employeeRank;
+    document.getElementById("change-position").value = employeeList[index].employeePosition;
+    document.getElementById("change-salary").value = employeeList[index].employeeSalary;
 }
 
 function removeEmployee(index) {

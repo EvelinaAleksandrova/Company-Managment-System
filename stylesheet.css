@@ -124,7 +124,7 @@ body {
     margin-bottom: 35px;
     margin-top: 10px;
     padding-bottom: 5px;
-    font-size: 20px;
+    font-size: 25px;
     border-bottom: 1px solid black;
 }
 
@@ -139,7 +139,7 @@ body {
 }
 
 .add-employee button {
-    width: 40%;
+    width: 60%;
     margin-top: 10px;
     font-size: 17px;
     text-align: center;
@@ -186,7 +186,7 @@ body {
 }
 
 .change-employee button {
-    width: 40%;
+    width: 60%;
     margin-top: 10px;
     font-size: 17px;
     text-align: center;
