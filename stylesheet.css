@@ -82,6 +82,15 @@ body {
     background-color: mediumspringgreen;
 }
 
+#h1-ceo-operations-message, #h1-employee-operations-message {
+    text-align: center;
+    font-size: 20px;
+    display: none;
+    margin-bottom: 50px;
+    border-top: 2px solid black;
+    padding-top: 20px;
+}
+
 
 #h1-ceo-operations {
     text-align: center;
@@ -99,6 +108,33 @@ body {
 .ceo-operations {
     display: flex;
 }
+
+#h1-employee-operations-message {
+    text-align: center;
+    font-size: 20px;
+    display: none;
+    margin-bottom: 50px;
+    border-top: 2px solid black;
+    padding-top: 20px;
+}
+
+#h1-employee-operations {
+    text-align: center;
+    font-size: 40px;
+    display: none;
+    margin-bottom: 50px;
+    border-top: 2px solid black;
+    padding-top: 50px;
+}
+
+#employee-operations {
+    display: none;
+}
+
+.employee-operations {
+    display: flex;
+}
+
 
 /*------------------------------- ADD EMPLOYEE FORM ---------------*/
 
@@ -139,6 +175,57 @@ body {
 }
 
 .add-employee button {
+    width: 60%;
+    margin-top: 10px;
+    font-size: 17px;
+    text-align: center;
+    justify-content: center;
+    background-color: mediumspringgreen;
+}
+
+/*------------------------------- ADD Material FORM ---------------*/
+
+.add-material {
+    /*margin-top: 200px;*/
+    font-size: 20px;
+    /*flex-flow: column;*/
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    border: double 4px black;
+    width: 20%;
+    height: 70%;
+    /*margin: auto;*/
+    margin-left: 3%;
+    padding-bottom: 15px;
+    margin-bottom: 60px;
+    align-items: center;
+    /*visibility: hidden;*/
+}
+
+.add-material h3 {
+    margin-bottom: 35px;
+    margin-top: 10px;
+    padding-bottom: 5px;
+    font-size: 25px;
+    border-bottom: 1px solid black;
+}
+
+.add-material input {
+    font-size: 20px;
+    text-align: center;
+    height: 35px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 5px;
+    width: 80%;
+}
+
+#change-article-text, #new-article-text {
+    height: 300px;
+}
+
+.add-material button {
     width: 60%;
     margin-top: 10px;
     font-size: 17px;
@@ -194,6 +281,53 @@ body {
     background-color: mediumspringgreen;
 }
 
+/*--------------------------------- CHANGE Material FORM---------------*/
+
+.change-material {
+    /*margin-top: 200px;*/
+    font-size: 20px;
+    /*flex-flow: column;*/
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    border: double 4px black;
+    width: 20%;
+    height: 70%;
+    /*margin: auto;*/
+    margin-left: 3%;
+    padding-bottom: 15px;
+    margin-bottom: 60px;
+    align-items: center;
+    /*visibility: hidden;*/
+}
+
+.change-material h3 {
+    margin-bottom: 35px;
+    margin-top: 10px;
+    padding-bottom: 5px;
+    font-size: 25px;
+    border-bottom: 1px solid black;
+}
+
+.change-material input {
+    font-size: 20px;
+    text-align: center;
+    height: 35px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 5px;
+    width: 80%;
+}
+
+.change-material button {
+    width: 60%;
+    margin-top: 10px;
+    font-size: 17px;
+    text-align: center;
+    justify-content: center;
+    background-color: mediumspringgreen;
+}
+
 /*------------------------------------------ LIST OF ALL EMPLOYEE ------------------*/
 .employee-container {
     margin-left: 5px;
@@ -215,42 +349,44 @@ body {
     margin-top: 30px;
 }
 
-.employee-container h4 {
-    margin-bottom: 20px;
-    font-size: 20px;
-    margin-left: 10px;
-    margin-right: 10px;
+/*------------------------------------------ List Of ALL MATERIALS -----------------------*/
+.materials-container {
+    margin-left: 5px;
+    margin-bottom: 60px;
+    border: 4px double black;
+    align-items: center;
+    width: 70%;
+    margin-right: 1%;
+
 }
 
+.materials-container h3 {
+    font-size: 30px;
+    margin-bottom: 30px;
+    text-align: center;
+    /*border-bottom: 1px solid black;*/
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-top: 30px;
+}
 
-/*.employee-container #employees-list {*/
-/*    font-size: 20px;*/
-/*}*/
-
-/*#employees-list li {*/
-/*    font-size: 25px;*/
-/*    list-style-type: none;*/
-/*    margin-left: 10px;*/
-/*    margin-bottom: 20px;*/
-/*}*/
-
-table .delete-btn-employee {
+#table-material, #table .delete-btn-employee {
     background-color: red;
     font-size: 17px;
     color: white;
     width: 100px;
-    height: 22px;
+    height: 25px;
     float: right;
     margin-right: 70px;
 
 }
 
-table .edit-salary-btn {
+#table-material, #table .edit-salary-btn {
     background-color: #e8e71e;
     font-size: 17px;
     color: black;
     width: 100px;
-    height: 22px;
+    height: 25px;
     float: right;
     margin-right: 50px;
 }
@@ -263,14 +399,15 @@ table {
     margin-top: 10px;
 }
 
-/*#edit-btn-td, #delete-btn-td {*/
-/*    border-top:1px solid #000000 ;*/
-/*    border-bottom: 1px solid #000000;*/
+#edit-btn-td, #delete-btn-td {
+    border-top: 1px solid #000000;
+    border-bottom: 1px solid #000000;
 
-/*}*/
-/*#edit-btn-td{*/
-/*    border-right: none;*/
-/*}*/
+}
+
+#edit-btn-td {
+    border-right: none;
+}
 
 td, th {
     border: 1px solid #000000;
@@ -284,6 +421,21 @@ td, th {
 }
 
 #log-out-ceo-button {
+    text-align: center;
+    background-color: orange;
+    font-size: 20px;
+    margin-bottom: 100px;
+    width: 35%;
+    height: 40px;
+    display: none;
+}
+
+.employee-operations-button {
+    display: flex;
+    justify-content: center;
+}
+
+#log-out-employee-button {
     text-align: center;
     background-color: orange;
     font-size: 20px;
