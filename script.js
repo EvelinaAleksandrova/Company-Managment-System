@@ -20,36 +20,49 @@ let currentIndexOfEmployee;
 let employeeList = [];
 let materialsList = [];
 
+let director = {
+    employeeName: "Nadejda Petrova",
+    employeeWorkIDNumber: "#1",
+    employeePassword: "1",
+    employeeRank: "senior",
+    employeePosition: "executive director",
+    employeeSalary: "6000"
+}
+
+for (let i = 0; i < employeeList.length; i++) {
+    if (employeeList[i].employeeWorkIDNumber === director.employeeWorkIDNumber) {
+        break;
+    } else {
+        employeeList.push(director);
+        updateLocalStorageEmployees();
+        showEmployees();
+    }
+}
+
+
 function check() {
     let flagLogIn = false;
-
-    let director = {
-        "name": "Nadejda Ivanova",
-        "workIDNumberForDirector": "#1",
-        "passwordDirector": "1"
-    }
 
     let inputWorkIDNumber = document.getElementById('work-id-number').value;
     let inputPassword = document.getElementById('password').value;
 
-    if (inputWorkIDNumber === director.workIDNumberForDirector) {
-        if (inputPassword === director.passwordDirector) {
-            document.getElementById('h1-ceo-operations-message').innerText
-                = "Current Login - " + director.name +
-                " | Work ID - " + director.workIDNumberForDirector;
-            openFormDirectorOperations();
-            flagLogIn = true;
-        }
-    }
-
     for (let i = 0; i < employeeList.length; i++) {
         if (employeeList[i].employeeWorkIDNumber === inputWorkIDNumber) {
             if (employeeList[i].employeePassword === inputPassword) {
-                document.getElementById('h1-employee-operations-message').innerText
-                    = "Current Login - " + employeeList[i].employeeName +
-                    " | Work ID - " + employeeList[i].employeeWorkIDNumber;
-                openFormEmployeeOperations();
-                flagLogIn = true;
+
+                if (employeeList[i].employeePosition === "executive director") {
+                    document.getElementById('h1-ceo-operations-message').innerText
+                        = "Current Login \n" +  employeeList[i].employeeName +
+                        "    |   Work ID  " + employeeList[i].employeeWorkIDNumber;
+                    openFormDirectorOperations();
+                    flagLogIn = true;
+                } else {
+                    document.getElementById('h1-employee-operations-message').innerText
+                        = "Current Login \n" + employeeList[i].employeeName +
+                        "   |   Work ID  " + employeeList[i].employeeWorkIDNumber;
+                    openFormEmployeeOperations();
+                    flagLogIn = true;
+                }
             }
         }
     }
@@ -311,40 +324,3 @@ function addMaterial() {
         alert("Empty field. Please fill in all input fields.");
     }
 }
-
-// console.log(employeeList);
-// employeeList[0].employeeSalary = 1200;
-
-// 0:
-// employeeName: "Erik"
-// employeePassword: "3"
-// employeePosition: "journalist"
-// employeeRank: "senior"
-// employeeSalary: "4000"
-// employeeWorkIDNumber: "#3"
-//     [[Prototype]]: Object
-// 1:
-// employeeName: "evi aleksandrova"
-// employeePassword: "2"
-// employeePosition: "journalist"
-// employeeRank: "junior"
-// employeeSalary: "1200"
-// employeeWorkIDNumber: "2"
-//     [[Prototype]]: Object
-// length: 2
-//     [[Prototype]]: Array(0)
-
-// Name <input type="text" id="change-name">
-// Work ID Number <input type="text" id="change-work-id-number" placeholder="#123456789"/>
-// Password <input id="change-password" type="password"/>
-// Rank <input type="text" id="change-rank">
-// Position <input type="text" id="change-position">
-// Salary <input type="text" id="change-salary">
-// employeeList[index].employeeSalary = 1200;
-
-// employeeName: newName.value,
-//     employeeWorkIDNumber: newWorkIDNumber.value,
-//     employeePassword: newPassword.value,
-//     employeeRank: newRank.value,
-//     employeePosition: newPosition.value,
-//     employeeSalary: newSalary.value
