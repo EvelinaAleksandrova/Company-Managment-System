@@ -75,7 +75,7 @@
             <h3 id="h3-add-new-material">Add new Material</h3>
             Name of Article<input type="text" id="new-article-name">
             Text of Article<input type="text" id="new-article-text">
-            Writer ID <input type="text" id="work-id-number-of-employee-material" placeholder="#123456789"/>
+            Writer ID <input type="text" id="work-id-number-of-employee-material" placeholder="#123456789" disabled/>
             Accessibility <input type="text" id="new-accessibility-article"/>
             <button type="button" id="add-new-article-button" onclick="addMaterial()">Add Article</button>
         </div>
@@ -86,8 +86,8 @@
             Text of Article <input type="text" id="change-article-text"/>
             Writer ID <input type="text" id="change-work-id-number-of-employee-material" placeholder="#123456789" disabled/>
             Accessibility <input type="text" id="change-accessibility-article">
-            <button type="button" id="change-new-material-button" onclick="changeMaterial()">Edit Material</button>
-<!--            <button type="button" id="deny-employee-button" onclick="denyEmployeeButton()">Deny Edit</button>-->
+            <button type="button" id="change-new-material-button" onclick="changeMaterial()">Submit</button>
+            <button type="button" id="cancel-employee-button" onclick="cancelMaterialButton()">Cancel </button>
         </div>
 
         <div class="materials-container">

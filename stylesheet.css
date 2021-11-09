@@ -213,16 +213,19 @@ body {
 
 .add-material input {
     font-size: 20px;
-    text-align: center;
+    /*text-align: center;*/
     height: 35px;
     margin-left: 20px;
     margin-right: 20px;
     margin-bottom: 5px;
     width: 80%;
 }
+#work-id-number-of-employee-material{
+    text-align: center;
+}
 
 #change-article-text, #new-article-text {
-    height: 300px;
+    height: 150px;
 }
 
 .add-material button {
@@ -264,7 +267,7 @@ body {
 
 .change-employee input {
     font-size: 20px;
-    text-align: center;
+    /*text-align: center;*/
     height: 35px;
     margin-left: 20px;
     margin-right: 20px;
@@ -370,7 +373,7 @@ body {
     margin-top: 30px;
 }
 
-#table-material, #table .delete-btn-employee {
+#table-material .delete-btn-material {
     background-color: red;
     font-size: 17px;
     color: white;
@@ -381,7 +384,7 @@ body {
 
 }
 
-#table-material, #table .edit-salary-btn {
+#table-material .edit-btn-material {
     background-color: #e8e71e;
     font-size: 17px;
     color: black;

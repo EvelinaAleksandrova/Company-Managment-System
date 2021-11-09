@@ -17,6 +17,10 @@ let newAccessibility = document.getElementById('new-accessibility-article');
 
 
 let currentIndexOfEmployee;
+let currentIndexOfMaterial;
+
+let currentWorkID;
+
 let employeeList = [];
 let materialsList = [];
 
@@ -52,7 +56,7 @@ function check() {
 
                 if (employeeList[i].employeePosition === "executive director") {
                     document.getElementById('h1-ceo-operations-message').innerText
-                        = "Current Login \n" +  employeeList[i].employeeName +
+                        = "Current Login \n" + employeeList[i].employeeName +
                         "    |   Work ID  " + employeeList[i].employeeWorkIDNumber;
                     openFormDirectorOperations();
                     flagLogIn = true;
@@ -60,6 +64,8 @@ function check() {
                     document.getElementById('h1-employee-operations-message').innerText
                         = "Current Login \n" + employeeList[i].employeeName +
                         "   |   Work ID  " + employeeList[i].employeeWorkIDNumber;
+                    currentWorkID = employeeList[i].employeeWorkIDNumber;
+                    document.getElementById("work-id-number-of-employee-material").value = currentWorkID;
                     openFormEmployeeOperations();
                     flagLogIn = true;
                 }
@@ -109,6 +115,7 @@ function closeEmployeeLogOut() {
     document.getElementById("h1-employee-operations-message").style.display = "none";
     document.getElementById('change-material-operations').style.display = "none";
     document.getElementById("login-operation").style.display = "block";
+    currentWorkID = "";
 }
 
 function loadLocalStorageEmployees() {
@@ -193,8 +200,8 @@ function showMaterials() {
             <td class="material">${material.employeeIDMaterial} </td>
             <td class="material">${material.accessibilityArticle} </td>
             
-            <td id="edit-btn-td"><button class="edit-salary-btn" ">Edit</button>
-            <button class="delete-btn-employee" onclick="removeMaterial(${index})">Delete</button></td>
+            <td id="material-btn-td"><button class="edit-btn-material" onclick="editMaterial(${index})">Edit</button>
+            <button class="delete-btn-material" onclick="removeMaterial(${index})">Delete</button></td>
         </tr>`;
     });
     tableMaterial.innerHTML = materialsTemplate;
@@ -223,9 +230,28 @@ function changeEmployee() {
     document.getElementById('change-employee-operations').style.display = "none";
 }
 
+function changeMaterial() {
+    materialsList[currentIndexOfMaterial].materialName = document.getElementById("change-article-name").value;
+    materialsList[currentIndexOfMaterial].materialText = document.getElementById("change-article-text").value;
+    // materialsList[currentIndexOfMaterial].employeeIDMaterial = document.getElementById("change-work-id-number-of-employee-material").value;
+    materialsList[currentIndexOfMaterial].accessibilityArticle = document.getElementById("change-accessibility-article").value;
+
+    updateLocalStorageMaterials();
+    showMaterials();
+
+    document.getElementById('add-material-operations').style.display = "block";
+    document.getElementById('change-material-operations').style.display = "none";
+}
+
+
 function denyEmployeeButton() {
     document.getElementById('add-employee-operations').style.display = "block";
     document.getElementById('change-employee-operations').style.display = "none";
+}
+
+function cancelMaterialButton() {
+    document.getElementById('add-material-operations').style.display = "block";
+    document.getElementById('change-material-operations').style.display = "none";
 }
 
 function editEmployee(index) {
@@ -241,6 +267,19 @@ function editEmployee(index) {
     document.getElementById("change-position").value = employeeList[index].employeePosition;
     document.getElementById("change-salary").value = employeeList[index].employeeSalary;
 }
+
+function editMaterial(index) {
+    currentIndexOfMaterial = index;
+
+    document.getElementById('add-material-operations').style.display = "none";
+    document.getElementById('change-material-operations').style.display = "block";
+
+    document.getElementById("change-article-name").value = materialsList[index].materialName;
+    document.getElementById("change-article-text").value = materialsList[index].materialText;
+    document.getElementById("change-work-id-number-of-employee-material").value = materialsList[index].employeeIDMaterial;
+    document.getElementById("change-accessibility-article").value = materialsList[index].accessibilityArticle;
+}
+
 
 function removeEmployee(index) {
     employeeList.splice(index, 1);
