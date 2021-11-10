@@ -267,7 +267,7 @@ body {
 
 .change-employee input {
     font-size: 20px;
-    /*text-align: center;*/
+    text-align: center;
     height: 35px;
     margin-left: 20px;
     margin-right: 20px;
@@ -385,6 +385,27 @@ body {
 }
 
 #table-material .edit-btn-material {
+    background-color: #e8e71e;
+    font-size: 17px;
+    color: black;
+    width: 100px;
+    height: 25px;
+    float: right;
+    margin-right: 50px;
+}
+
+#table .delete-btn-employee {
+    background-color: red;
+    font-size: 17px;
+    color: white;
+    width: 100px;
+    height: 25px;
+    float: right;
+    margin-right: 70px;
+
+}
+
+#table .edit-salary-btn {
     background-color: #e8e71e;
     font-size: 17px;
     color: black;
