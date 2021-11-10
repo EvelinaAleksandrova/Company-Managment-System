@@ -24,6 +24,8 @@ let removeEmployeeFromListIndex;
 let employeeList = [];
 let materialsList = [];
 
+let listWithIndexToBeRemoved = [];
+
 let director = {
     employeeName: "Nadejda Petrova",
     employeeWorkIDNumber: "#1",
@@ -56,8 +58,9 @@ function check() {
 
                 if (employeeList[i].employeePosition === "executive director") {
                     document.getElementById('h1-ceo-operations-message').innerText
-                        = "Current Login \n" + employeeList[i].employeeName +
-                        "    |   Work ID  " + employeeList[i].employeeWorkIDNumber;
+                        = "CURRENT LOGIN \n" + employeeList[i].employeeName +
+                        "\nID - " + employeeList[i].employeeWorkIDNumber
+                        + "\nposition - " + employeeList[i].employeePosition;
 
                     // document.getElementById('delete-btn-employee').style.display = "none";
                     // document.getElementById('edit-salary-btn').style.display = "none";
@@ -65,8 +68,10 @@ function check() {
                     flagLogIn = true;
                 } else {
                     document.getElementById('h1-employee-operations-message').innerText
-                        = "Current Login \n" + employeeList[i].employeeName +
-                        "   |   Work ID  " + employeeList[i].employeeWorkIDNumber;
+                        = "CURRENT LOGIN \n" + employeeList[i].employeeName +
+                        "\nID - " + employeeList[i].employeeWorkIDNumber
+                        + "\nposition - " + employeeList[i].employeePosition;
+
                     currentWorkID = employeeList[i].employeeWorkIDNumber;
                     document.getElementById("work-id-number-of-employee-material").value = currentWorkID;
                     openFormEmployeeOperations();
@@ -171,8 +176,11 @@ function showEmployees() {
             <td class="employee">${employee.employeePosition} </td>
             <td class="employee">${employee.employeeSalary} </td>
             
-            <td id="edit-btn-td"><button class="edit-salary-btn" id="edit-salary-btn" onclick="editEmployee(${index})">Edit</button>
-            <button class="delete-btn-employee"  id="delete-btn-employee" onclick="removeEmployee(${index})">Discharge</button></td>
+            <td id="edit-btn-td"><button class="edit-salary-btn" id="edit-salary-btn" 
+            onclick="editEmployee(${index})">Edit</button>
+            <button class="delete-btn-employee"  id="delete-btn-employee"
+             onclick="removeEmployee(${index});
+                    ">Discharge</button></td>
         </tr>`;
     });
     table.innerHTML = employeeTemplate;
@@ -320,30 +328,41 @@ function editMaterial(index) {
     document.getElementById("change-accessibility-article").value = materialsList[index].accessibilityArticle;
 }
 
+// function deleteMaterials() {
+//     console.log("----------------------------------delete materials--------------------");
+//     for (let i = 0; i < listWithIndexToBeRemoved.length; i++) {
+//         console.log("li[i]  - " + listWithIndexToBeRemoved[i]);
+//
+//         materialsList.splice(listWithIndexToBeRemoved[i], 1);
+//         updateLocalStorageMaterials();
+//         showMaterials();
+//
+//         console.log("delete index now  - " + listWithIndexToBeRemoved[i]);
+//         this.parentNode.remove();
+//         continue;
+//     }
+//
+//     console.log("============= END of function ===============");
+//
+//
+// }
 
 function removeEmployee(index) {
+    console.log("------------------------Remove employee---------------");
+
     let currentRemoveEmployeeIDNumber = employeeList[index].employeeWorkIDNumber; // #3
-    // removeEmployeeFromListIndex = index; // [0,1,3] -> example 2
     let counter = 0;
 
     for (let index = 0; index < materialsList.length; index++) {
         if (materialsList[index].employeeIDMaterial === currentRemoveEmployeeIDNumber) {
             counter++;
-            console.log("Counter  " + counter);
-            console.log(" employee ID  " + materialsList[index].employeeIDMaterial);
-
-            // removeMaterial(index);
-            console.log("Before remove ");
-            materialsList.splice(index, 1);
-            updateLocalStorageMaterials();
-            showMaterials();
-            console.log("after remove ");
-            this.parentNode.remove();
+            console.log("Counter  - " + counter);
+            listWithIndexToBeRemoved.push(index);
+            console.log("index pushed in list - " + index);
+            removeMaterial(index);
         }
     }
-    
 
-    console.log("Counter  " + counter);
 
     employeeList.splice(index, 1);
     updateLocalStorageEmployees();
@@ -362,6 +381,26 @@ function removeEmployee(index) {
     //         return this.parentNode.remove();
     //     }
     // });
+    // console.log("List " + listWithIndexToBeRemoved);
+    //
+    // if (listWithIndexToBeRemoved.length > 0) {
+    //     deleteMaterials(listWithIndexToBeRemoved);
+    // }
+
+    // console.log("Counter after for 1 " + counter);
+
+    // console.log("Counter after for 2 " + counter);
+    // newList.push(index);
+    // console.log("Index in list " + index);
+    // console.log(" employee ID  " + materialsList[index].employeeIDMaterial);
+
+    // removeMaterial(index);
+    // console.log("Before remove ");
+    // materialsList.splice(index, 1);
+    // updateLocalStorageMaterials();
+    // showMaterials();
+    // console.log("after remove ");
+    // this.parentNode.remove();
 
 }
 
