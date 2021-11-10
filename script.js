@@ -14,16 +14,17 @@ let newAccessibility = document.getElementById('new-accessibility-article');
 
 let currentIndexOfEmployee;
 let currentIndexOfMaterial;
-let currentWorkID;
+
+let currentWorkIDForEmployee;
 
 let employeeList = [];
 let materialsList = [];
 
 let director = {
-    employeeName: "Nadejda Petrova",
+    employeeName: "Mariya Petrova",
     employeeWorkIDNumber: "#1",
     employeePassword: "1",
-    employeeRank: "senior",
+    employeeRank: "director",
     employeePosition: "executive director",
     employeeSalary: "6000"
 }
@@ -52,6 +53,7 @@ function check() {
                         = "CURRENT LOGIN \n" + employeeList[i].employeeName +
                         "\nID - " + employeeList[i].employeeWorkIDNumber
                         + "\nposition - " + employeeList[i].employeePosition;
+
                     openFormDirectorOperations();
                     flagLogIn = true;
                 } else {
@@ -60,8 +62,10 @@ function check() {
                         "\nID - " + employeeList[i].employeeWorkIDNumber
                         + "\nposition - " + employeeList[i].employeePosition;
 
-                    currentWorkID = employeeList[i].employeeWorkIDNumber;
-                    document.getElementById("work-id-number-of-employee-material").value = currentWorkID;
+                    currentWorkIDForEmployee = employeeList[i].employeeWorkIDNumber;
+
+                    document.getElementById("work-id-number-of-employee-material").value = currentWorkIDForEmployee;
+
                     openFormEmployeeOperations();
                     flagLogIn = true;
                 }
@@ -110,7 +114,7 @@ function closeEmployeeLogOut() {
     document.getElementById("h1-employee-operations-message").style.display = "none";
     document.getElementById('change-material-operations').style.display = "none";
     document.getElementById("login-operation").style.display = "block";
-    currentWorkID = "";
+    currentWorkIDForEmployee = "";
 }
 
 function loadLocalStorageEmployees() {
@@ -238,23 +242,23 @@ function changeMaterial() {
     //         flagDuplicateArticleName = true;
     //     }
     // }
-
-
-    if (flagDuplicateArticleText === false && flagDuplicateArticleName === false) {
-        materialsList[currentIndexOfMaterial].materialName = document.getElementById("change-article-name").value;
-        materialsList[currentIndexOfMaterial].materialText = document.getElementById("change-article-text").value;
-        // materialsList[currentIndexOfMaterial].employeeIDMaterial = document.getElementById("change-work-id-number-of-employee-material").value;
+    // if (flagDuplicateArticleText === false && flagDuplicateArticleName === false) {
+    materialsList[currentIndexOfMaterial].materialName = document.getElementById("change-article-name").value;
+    materialsList[currentIndexOfMaterial].materialText = document.getElementById("change-article-text").value;
+    // materialsList[currentIndexOfMaterial].employeeIDMaterial = document.getElementById("change-work-id-number-of-employee-material").value;
+    if (materialsList[currentIndexOfMaterial].employeeIDMaterial === currentWorkIDForEmployee) {
         materialsList[currentIndexOfMaterial].accessibilityArticle = document.getElementById("change-accessibility-article").value;
-
-        updateLocalStorageMaterials();
-        showMaterials();
-
-        document.getElementById('add-material-operations').style.display = "block";
-        document.getElementById('change-material-operations').style.display = "none";
-
-        document.getElementById("work-id-number-of-employee-material").value = currentWorkID;
-        document.getElementById("change-work-id-number-of-employee-material").value = currentWorkID;
     }
+
+    updateLocalStorageMaterials();
+    showMaterials();
+
+    document.getElementById('add-material-operations').style.display = "block";
+    document.getElementById('change-material-operations').style.display = "none";
+
+    document.getElementById("work-id-number-of-employee-material").value = currentWorkIDForEmployee;
+    document.getElementById("change-work-id-number-of-employee-material").value = currentWorkIDForEmployee;
+    // }
     // else {
     //     if (flagDuplicateArticleName === true) {
     //         alert("Duplicate article name. Change with other name!");
@@ -263,8 +267,8 @@ function changeMaterial() {
     //         alert("Duplicate article text. Change with other text!");
     //     }
     // }
-    document.getElementById("work-id-number-of-employee-material").value = currentWorkID;
-    document.getElementById("change-work-id-number-of-employee-material").value = currentWorkID;
+    document.getElementById("work-id-number-of-employee-material").value = currentWorkIDForEmployee;
+    document.getElementById("change-work-id-number-of-employee-material").value = currentWorkIDForEmployee;
 }
 
 function denyEmployeeButton() {
@@ -280,24 +284,30 @@ function cancelMaterialButton() {
 function editEmployee(index) {
     currentIndexOfEmployee = index;
 
-    document.getElementById('add-employee-operations').style.display = "none";
-    document.getElementById('change-employee-operations').style.display = "block";
+    if (employeeList[index].employeeWorkIDNumber === director.employeeWorkIDNumber) {
+        alert("You don't have access to edit Executive Director!");
+    } else {
+        document.getElementById('add-employee-operations').style.display = "none";
+        document.getElementById('change-employee-operations').style.display = "block";
 
-    document.getElementById("change-name").value = employeeList[index].employeeName;
-    document.getElementById("change-work-id-number").value = employeeList[index].employeeWorkIDNumber;
-    document.getElementById("change-password").value = employeeList[index].employeePassword;
-    document.getElementById("change-rank").value = employeeList[index].employeeRank;
-    document.getElementById("change-position").value = employeeList[index].employeePosition;
-    document.getElementById("change-salary").value = employeeList[index].employeeSalary;
+        document.getElementById("change-name").value = employeeList[index].employeeName;
+        document.getElementById("change-work-id-number").value = employeeList[index].employeeWorkIDNumber;
+        document.getElementById("change-password").value = employeeList[index].employeePassword;
+        document.getElementById("change-rank").value = employeeList[index].employeeRank;
+        document.getElementById("change-position").value = employeeList[index].employeePosition;
+        document.getElementById("change-salary").value = employeeList[index].employeeSalary;
+    }
+
+
 }
 
 function editMaterial(index) {
     currentIndexOfMaterial = index;
 
     if (materialsList[index].accessibilityArticle === "private") {
-        if (currentWorkID === materialsList[index].employeeIDMaterial) {
-            document.getElementById("work-id-number-of-employee-material").value = currentWorkID;
-            document.getElementById("change-work-id-number-of-employee-material").value = currentWorkID;
+        if (currentWorkIDForEmployee === materialsList[index].employeeIDMaterial) {
+            document.getElementById("work-id-number-of-employee-material").value = currentWorkIDForEmployee;
+            document.getElementById("change-work-id-number-of-employee-material").value = currentWorkIDForEmployee;
 
             document.getElementById('add-material-operations').style.display = "none";
             document.getElementById('change-material-operations').style.display = "block";
@@ -310,8 +320,8 @@ function editMaterial(index) {
             alert("You DON'T have access to EDIT this private article!!");
         }
     } else if (materialsList[index].accessibilityArticle === "public") {
-        document.getElementById("work-id-number-of-employee-material").value = currentWorkID;
-        document.getElementById("change-work-id-number-of-employee-material").value = currentWorkID;
+        document.getElementById("work-id-number-of-employee-material").value = currentWorkIDForEmployee;
+        document.getElementById("change-work-id-number-of-employee-material").value = currentWorkIDForEmployee;
 
         document.getElementById('add-material-operations').style.display = "none";
         document.getElementById('change-material-operations').style.display = "block";
@@ -325,39 +335,51 @@ function editMaterial(index) {
 
 function removeEmployee(index) {
     let currentRemoveEmployeeIDNumber = employeeList[index].employeeWorkIDNumber; // #3
-    let counter = 0;
 
-    for (let index = 0; index < materialsList.length; index++) {
-        if (materialsList[index].employeeIDMaterial === currentRemoveEmployeeIDNumber) {
-
-            removeMaterial(index);
+    if (employeeList[index].employeeWorkIDNumber === director.employeeWorkIDNumber) {
+        alert("You don't have access to delete Executive Director!");
+    } else {
+        for (let index = 0; index < materialsList.length; index++) {
+            if (materialsList[index].employeeIDMaterial === currentRemoveEmployeeIDNumber) {
+                removeMaterial(index);
+            }
         }
+        employeeList.splice(index, 1);
+        updateLocalStorageEmployees();
+        showEmployees();
+
+        return this.parentNode.remove();
     }
-
-    employeeList.splice(index, 1);
-    updateLocalStorageEmployees();
-    showEmployees();
-
-    return this.parentNode.remove();
 }
 
 function removeMaterial(index) {
     if (materialsList[index].accessibilityArticle === "private") {
-        if (currentWorkID === materialsList[index].employeeIDMaterial) {
-            document.getElementById("work-id-number-of-employee-material").value = currentWorkID;
-            document.getElementById("change-work-id-number-of-employee-material").value = currentWorkID;
+        if (currentWorkIDForEmployee === materialsList[index].employeeIDMaterial) {
+            document.getElementById("work-id-number-of-employee-material").value = currentWorkIDForEmployee;
+            document.getElementById("change-work-id-number-of-employee-material").value = currentWorkIDForEmployee;
 
             materialsList.splice(index, 1);
             updateLocalStorageMaterials();
             showMaterials();
 
             return this.parentNode.remove();
+
+        } else if (director.employeeWorkIDNumber === "#1") {
+            document.getElementById("work-id-number-of-employee-material").value = currentWorkIDForEmployee;
+            document.getElementById("change-work-id-number-of-employee-material").value = currentWorkIDForEmployee;
+
+            materialsList.splice(index, 1);
+            updateLocalStorageMaterials();
+            showMaterials();
+
+            return this.parentNode.remove();
+
         } else {
             alert("You DON't have access to DELETE this private article!!");
         }
     } else if (materialsList[index].accessibilityArticle === "public") {
-        document.getElementById("work-id-number-of-employee-material").value = currentWorkID;
-        document.getElementById("change-work-id-number-of-employee-material").value = currentWorkID;
+        document.getElementById("work-id-number-of-employee-material").value = currentWorkIDForEmployee;
+        document.getElementById("change-work-id-number-of-employee-material").value = currentWorkIDForEmployee;
 
         materialsList.splice(index, 1);
         updateLocalStorageMaterials();
@@ -415,8 +437,8 @@ function addMaterial() {
     let flagDuplicateArticleName = false;
     let flagDuplicateArticleText = false;
 
-    document.getElementById("work-id-number-of-employee-material").value = currentWorkID;
-    document.getElementById("change-work-id-number-of-employee-material").value = currentWorkID;
+    document.getElementById("work-id-number-of-employee-material").value = currentWorkIDForEmployee;
+    document.getElementById("change-work-id-number-of-employee-material").value = currentWorkIDForEmployee;
 
     let newMaterial = {
         materialName: newArticleName.value,
@@ -443,8 +465,8 @@ function addMaterial() {
             materialsList.push(newMaterial);
             showMaterials();
             updateLocalStorageMaterials();
-            document.getElementById("work-id-number-of-employee-material").value = currentWorkID;
-            document.getElementById("change-work-id-number-of-employee-material").value = currentWorkID;
+            document.getElementById("work-id-number-of-employee-material").value = currentWorkIDForEmployee;
+            document.getElementById("change-work-id-number-of-employee-material").value = currentWorkIDForEmployee;
         } else {
             if (flagDuplicateArticleName === true) {
                 alert("Duplicate article name. Change with other name!");
@@ -453,12 +475,12 @@ function addMaterial() {
                 alert("Duplicate article text. Change with other text!");
             }
         }
-        document.getElementById("work-id-number-of-employee-material").value = currentWorkID;
-        document.getElementById("change-work-id-number-of-employee-material").value = currentWorkID;
+        document.getElementById("work-id-number-of-employee-material").value = currentWorkIDForEmployee;
+        document.getElementById("change-work-id-number-of-employee-material").value = currentWorkIDForEmployee;
 
     } else {
-        document.getElementById("work-id-number-of-employee-material").value = currentWorkID;
-        document.getElementById("change-work-id-number-of-employee-material").value = currentWorkID;
+        document.getElementById("work-id-number-of-employee-material").value = currentWorkIDForEmployee;
+        document.getElementById("change-work-id-number-of-employee-material").value = currentWorkIDForEmployee;
         alert("Empty field. Please fill in all input fields.");
     }
 }
