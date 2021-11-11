@@ -391,12 +391,7 @@ function removeMaterial(index) {
         // }
 
         if (currentWorkIDForEmployee === materialsList[index].employeeIDMaterial || director.employeeWorkIDNumber === "#1") {
-
-            console.log("currrent work id " + currentWorkIDForEmployee);
-            console.log("materials list id material " + materialsList[index].employeeIDMaterial);
-            console.log("director id " + director.employeeWorkIDNumber);
-
-
+            
             document.getElementById("work-id-number-of-employee-material").value = currentWorkIDForEmployee;
             document.getElementById("change-work-id-number-of-employee-material").value = currentWorkIDForEmployee;
 
