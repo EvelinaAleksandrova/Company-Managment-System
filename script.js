@@ -163,10 +163,8 @@ function showEmployees() {
             <td class="employee">${employee.employeePosition} </td>
             <td class="employee">${employee.employeeSalary} </td>
             
-            <td id="edit-btn-td"><button class="edit-salary-btn" id="edit-salary-btn" 
-            onclick="editEmployee(${index})">Edit</button>
-            <button class="delete-btn-employee"  id="delete-btn-employee"
-             onclick="removeEmployee(${index})">Discharge</button></td>
+            <td id="edit-btn-td"><button class="edit-salary-btn" id="edit-salary-btn" onclick="editEmployee(${index})">Edit</button>
+            <button class="delete-btn-employee"  id="delete-btn-employee"onclick="removeEmployee(${index})">Discharge</button></td>
         </tr>`;
     });
     table.innerHTML = employeeTemplate;
@@ -228,24 +226,9 @@ function changeEmployee() {
     } else {
         alert("Salary must be a positive number!");
     }
-
 }
 
 function changeMaterial() {
-    // let flagDuplicateArticleName = false;
-    // // let flagDuplicateArticleText = false;
-    //
-    // let changeNameOfArticle = document.getElementById("change-article-name").value;
-    // // let changeTextOfArticle = document.getElementById("change-article-text").value;
-    //
-    // for (let i = 0; i < materialsList.length; i++) {
-    //     if (materialsList[i].materialName === changeNameOfArticle) {
-    //         flagDuplicateArticleName = true;
-    //     }
-    // }
-    // if (flagDuplicateArticleName === false) {
-
-
     if (materialsList[currentIndexOfMaterial].accessibilityArticle === "public") {
         materialsList[currentIndexOfMaterial].materialName = document.getElementById("change-article-name").value;
         materialsList[currentIndexOfMaterial].materialText = document.getElementById("change-article-text").value;
@@ -286,16 +269,6 @@ function changeMaterial() {
         document.getElementById("work-id-number-of-employee-material").value = currentWorkIDForEmployee;
         document.getElementById("change-work-id-number-of-employee-material").value = currentWorkIDForEmployee;
     }
-    // } else {
-    //     if (flagDuplicateArticleName === true) {
-    //         alert("Duplicate material name. Change with other name!");
-    //     }
-    //     // if (flagDuplicateArticleText === true) {
-    //     //     alert("Duplicate material text. Change with other text!");
-    //     // }
-    // }
-    // document.getElementById("work-id-number-of-employee-material").value = currentWorkIDForEmployee;
-    // document.getElementById("change-work-id-number-of-employee-material").value = currentWorkIDForEmployee;
 }
 
 function denyEmployeeButton() {
@@ -314,7 +287,6 @@ function editEmployee(index) {
     if (employeeList[index].employeeWorkIDNumber === director.employeeWorkIDNumber) {
         alert("You don't have access to edit Executive Director!");
     } else {
-
         document.getElementById('add-employee-operations').style.display = "none";
         document.getElementById('change-employee-operations').style.display = "block";
 
@@ -325,8 +297,6 @@ function editEmployee(index) {
         document.getElementById("change-position").value = employeeList[index].employeePosition;
         document.getElementById("change-salary").value = employeeList[index].employeeSalary;
     }
-
-
 }
 
 function editMaterial(index) {
@@ -382,16 +352,8 @@ function removeEmployee(index) {
 
 function removeMaterial(index) {
     if (materialsList[index].accessibilityArticle === "private") {
-
-        // if (currentWorkIDForEmployee !== materialsList[index].employeeIDMaterial) {
-        //     alert("You DON't have access to DELETE this private material!!");
-        //     return;
-        // } else if (director.employeeWorkIDNumber === "#1") {
-        //
-        // }
-
         if (currentWorkIDForEmployee === materialsList[index].employeeIDMaterial || director.employeeWorkIDNumber === "#1") {
-            
+
             document.getElementById("work-id-number-of-employee-material").value = currentWorkIDForEmployee;
             document.getElementById("change-work-id-number-of-employee-material").value = currentWorkIDForEmployee;
 
