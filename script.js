@@ -183,9 +183,9 @@ function showMaterials() {
 
         materialsTemplate += `
                  <tr>
-                    <th>Name of Article</th>
-                    <th>Text of Article</th>
-                    <th>Writer ID</th>
+                    <th>Name of Material</th>
+                    <th>Description</th>
+                    <th>Work ID</th>
                     <th>Accessibility</th>
                     <th></th>
                 </tr>
@@ -410,7 +410,7 @@ function addEmployee() {
         newPosition.value !== "" &&
         newSalary.value !== "") {
 
-        if (Number.isInteger(parseInt(newSalary.value) > 0)) {
+        if (Number.isInteger(parseInt(newSalary.value)) && parseInt(newSalary.value) > 0) {
             if (flagDuplicateID === false) {
                 employeeList.push(newEmployee);
                 showEmployees();
