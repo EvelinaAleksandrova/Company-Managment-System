@@ -1,1 +1,1 @@
-# Newspaper-Managment-System
+# Company-Managment-System
